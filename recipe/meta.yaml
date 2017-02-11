@@ -33,6 +33,7 @@ requirements:
     - readline 6.2*
     - perl
     - curl
+    - openssl
   run:
     - gmp
     - readline 6.2*
