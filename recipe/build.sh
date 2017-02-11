@@ -45,6 +45,9 @@ then
 fi
 tar -xvf galdata.tgz
 
+mkdir -p "$PREFIX"/share/pari
+cp -R data/* "$PREFIX"/share/pari/
+
 chmod +x Configure
 ./Configure --prefix="$PREFIX" \
         --with-readline="$PREFIX" \
