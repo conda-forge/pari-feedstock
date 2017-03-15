@@ -22,20 +22,20 @@ source:
     - patches/stackwarn.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
   build:
     - toolchain
     - libtool
-    - gmp
+    - gmp >=5.0.1,<7
     - readline 6.2*
     - perl 5.22.0.1
     - curl
-    - openssl
+    - openssl 1.0.*
   run:
-    - gmp
+    - gmp >=5.0.1,<7
     - readline 6.2*
     - perl
 
