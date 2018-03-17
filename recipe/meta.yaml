@@ -1,4 +1,4 @@
-{% set version = "2.9.2" %}
+{% set version = "2.9.4" %}
 {% set name = "pari" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
-  sha256: 9aa24cbbcf4e0b09dcc21cf9b09f2eb08e38ee16ab13651be7274c9b3e46207e
+  sha256: 4f9cdc739630a039c0fcc9afac2e5647659c4a709dcc6f7a69d5908cd4a82647
   patches:
     # Jeroen Demeyer - Add -fno-common to DLCFLAGS on
     # Darwin. Submitted upstream, but upstream only applied it for PowerPC.
