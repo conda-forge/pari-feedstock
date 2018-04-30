@@ -30,13 +30,13 @@ requirements:
     - toolchain
     - libtool
     - gmp >=5.0.1,<7
-    - readline 6.2*
+    - readline 6.3*
     - perl 5.22.0.1
     - curl
     - openssl 1.0.*
   run:
     - gmp >=5.0.1,<7
-    - readline 6.2*
+    - readline 6.3*
     - perl
 
 test:
