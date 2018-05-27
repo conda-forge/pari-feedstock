@@ -22,21 +22,24 @@ source:
     - patches/stackwarn.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('pari', max_pin='x.x') }}
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
     - libtool
-    - gmp >=5.0.1,<7
-    - readline 6.3*
-    - perl 5.22.0.1
     - curl
-    - openssl 1.0.*
+  host:
+    - gmp
+    - readline
+    - openssl
+    - perl
   run:
-    - gmp >=5.0.1,<7
-    - readline 6.3*
+    - gmp
+    - readline
     - perl
 
 test:
