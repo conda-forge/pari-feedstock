@@ -1,0 +1,37 @@
+build_number_decrement:
+- '1000'
+c_compiler:
+- toolchain_c
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+curl:
+- '7.59'
+docker_image:
+- condaforge/linux-anvil
+gmp:
+- '6'
+openssl:
+- 1.0.2
+perl:
+- '5.26'
+pin_run_as_build:
+  curl:
+    max_pin: x
+  gmp:
+    max_pin: x
+  openssl:
+    max_pin: x.x.x
+  perl:
+    max_pin: x.x.x
+  readline:
+    max_pin: x
+readline:
+- '7.0'
+zip_keys:
+- - c_compiler
+  - channel_sources
+  - channel_targets
+  - docker_image
+  - build_number_decrement
