@@ -6,6 +6,11 @@ export CXXFLAGS="-g $CXXFLAGS"
 # pari sends LDFLAGS to LD if set, but LDFLAGS are meant for the compiler to pass to linker.
 unset LD
 
+if [ "$(uname)" == "Linux" ]
+then
+   export LDFLAGS="$LDFLAGS -Wl,rpath-link,${PREFIX}/lib"
+fi
+
 unset GP_INSTALL_PREFIX # we do not want this to be set by the user
 
 # In addition, a lot of variables used (internally) by PARI might un-
