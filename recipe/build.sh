@@ -8,7 +8,7 @@ unset LD
 
 if [ "$(uname)" == "Linux" ]
 then
-   export LDFLAGS="$LDFLAGS -Wl,rpath-link,${PREFIX}/lib"
+   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
 fi
 
 unset GP_INSTALL_PREFIX # we do not want this to be set by the user
