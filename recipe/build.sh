@@ -1,10 +1,15 @@
 #!/bin/bash
 
-export CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
-export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
 export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
 export CFLAGS="-g $CFLAGS"
 export CXXFLAGS="-g $CXXFLAGS"
+# pari sends LDFLAGS to LD if set, but LDFLAGS are meant for the compiler to pass to linker.
+unset LD
+
+if [ "$(uname)" == "Linux" ]
+then
+   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
+fi
 
 unset GP_INSTALL_PREFIX # we do not want this to be set by the user
 
