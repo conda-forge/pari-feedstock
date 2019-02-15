@@ -22,7 +22,7 @@ source:
     - patches/stackwarn.patch
 
 build:
-  number: 1001
+  number: 1002
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
