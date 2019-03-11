@@ -1,4 +1,4 @@
-{% set version = "2.11.1" %}
+{% set version = "2.9.5" %}
 {% set name = "pari" %}
 
 package:
@@ -10,7 +10,7 @@ source:
   url: 
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 24a9b324a6e9fb161f49dd93aa4dc3f8bb8996c96050ee0468b2f92b45eacac9
+  sha256: 6b451825b41d2f8b29592c08d671999527bf936789c599d77b8dfdc663f1e617
   patches:
     # Jeroen Demeyer - Add -fno-common to DLCFLAGS on
     # Darwin. Submitted upstream, but upstream only applied it for PowerPC.
@@ -24,7 +24,7 @@ source:
     - patches/stackwarn.patch
 
 build:
-  number: 0
+  number: 1002
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
