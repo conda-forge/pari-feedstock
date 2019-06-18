@@ -1,4 +1,4 @@
-{% set version = "2.9.5" %}
+{% set version = "2.11.1" %}
 {% set name = "pari" %}
 
 package:
@@ -6,25 +6,19 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: 
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6b451825b41d2f8b29592c08d671999527bf936789c599d77b8dfdc663f1e617
+  sha256: 24a9b324a6e9fb161f49dd93aa4dc3f8bb8996c96050ee0468b2f92b45eacac9
   patches:
-    # Jeroen Demeyer - Add -fno-common to DLCFLAGS on
-    # Darwin. Submitted upstream, but upstream only applied it for PowerPC.
-    # Since this doesn't break anything and only improves performance, add
-    # the flag unconditionally
+    # Patches from sagemath
     - patches/get_dlcflags.patch
-    # Jeroen Demeyer - Use PROT_NONE for unused virtual stack memory
-    - patches/prot_none.patch
-    # Jeroen Demeyer - https://trac.sagemath.org/ticket/19883
-    # do not display warnings regarding the stack size (unless DEBUGMEM is set).
-    - patches/stackwarn.patch
+    - patches/prot_none_cygwin.patch
+    - patches/QX_factor.patch
+    - patches/red_montgomery.patch
 
 build:
-  number: 1002
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
