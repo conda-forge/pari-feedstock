@@ -18,7 +18,7 @@ source:
     - patches/red_montgomery.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
