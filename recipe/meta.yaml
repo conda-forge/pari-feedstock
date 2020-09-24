@@ -1,4 +1,4 @@
-{% set version = "2.11.2" %}
+{% set version = "2.11.4" %}
 {% set name = "pari" %}
 
 package:
@@ -6,10 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  url: 
+  url:
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4a6532b3c77350363fa618ead5cd794a172d7b7e5757a28f7788e658b5469339
+  sha256: bfc88fc4f7352f4840e6e352c72f0369cbea8a45403b1834a6269f3709970b1c
   patches:
     # Patches from sagemath
     - patches/get_dlcflags.patch
