@@ -5,11 +5,13 @@ Home: http://pari.math.u-bordeaux.fr
 
 Package license: GPLv2+
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pari-feedstock/blob/master/LICENSE.txt)
 
 Summary: PARI/GP is a widely used computer algebra system designed for fast computations in number theory
 
+Development: http://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
 
+Documentation: http://pari.math.u-bordeaux.fr/dochtml/html-stable/
 
 Current build status
 ====================
