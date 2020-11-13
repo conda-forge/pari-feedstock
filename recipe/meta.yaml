@@ -31,11 +31,11 @@ requirements:
     - gmp
     - readline
     - openssl
-    - perl
+    - perl 5.*
   run:
     - gmp
     - readline
-    - perl
+    - perl 5.*
     - pari-galdata
     - pari-seadata-small
 
