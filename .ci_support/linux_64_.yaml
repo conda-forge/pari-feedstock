@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
 cdt_name:
 - cos6
 channel_sources:
@@ -16,8 +16,6 @@ gmp:
 - '6'
 openssl:
 - 1.1.1
-perl:
-- 5.26.2
 pin_run_as_build:
   curl:
     max_pin: x
@@ -25,11 +23,12 @@ pin_run_as_build:
     max_pin: x
   openssl:
     max_pin: x.x.x
-  perl:
-    max_pin: x.x.x
   readline:
     max_pin: x
 readline:
 - '8.0'
 target_platform:
 - linux-64
+zip_keys:
+- - cdt_name
+  - docker_image

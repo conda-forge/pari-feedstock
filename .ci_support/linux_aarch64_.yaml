@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -20,16 +20,12 @@ gmp:
 - '6'
 openssl:
 - 1.1.1
-perl:
-- 5.26.2
 pin_run_as_build:
   curl:
     max_pin: x
   gmp:
     max_pin: x
   openssl:
-    max_pin: x.x.x
-  perl:
     max_pin: x.x.x
   readline:
     max_pin: x
