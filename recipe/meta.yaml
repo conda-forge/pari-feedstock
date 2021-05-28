@@ -27,11 +27,11 @@ requirements:
     - libtool
     - curl
     - make
+    - perl 5.*
   host:
     - gmp
     - readline
     - openssl
-    - perl 5.*
   run:
     - gmp
     - readline
