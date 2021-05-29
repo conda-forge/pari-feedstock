@@ -27,15 +27,15 @@ requirements:
     - libtool
     - curl
     - make
+    - perl 5.*
   host:
     - gmp
     - readline
     - openssl
-    - perl
   run:
     - gmp
     - readline
-    - perl
+    - perl 5.*
     - pari-galdata
     - pari-seadata-small
 
