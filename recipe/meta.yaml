@@ -16,7 +16,7 @@ source:
     - patches/prot_none_cygwin.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
