@@ -26,7 +26,6 @@ chmod +x Configure
         --with-gmp="$PREFIX" \
         --with-runtime-perl="$PREFIX/bin/perl" \
         --kernel=gmp \
-        --mt=pthread \
         --graphic=none
 
 make gp
