@@ -16,7 +16,7 @@ source:
     - patches/prot_none_cygwin.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
@@ -49,8 +49,8 @@ test:
 
 about:
   home: http://pari.math.u-bordeaux.fr
-  license: GPLv2+
-  license_file: {{ SRC_DIR }}/COPYING
+  license: GPL-2.0-or-later
+  license_file: COPYING
   summary: PARI/GP is a widely used computer algebra system designed for fast computations in number theory
   dev_url: http://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
   doc_url: http://pari.math.u-bordeaux.fr/dochtml/html-stable/
