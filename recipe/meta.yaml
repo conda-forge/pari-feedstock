@@ -13,7 +13,7 @@ source:
   patches:
     # Patches from sagemath
     - patches/get_dlcflags.patch
-    - patches/prot_none_cygwin.patch
+    # - patches/prot_none_cygwin.patch
     - patches/pari_mainstack.diff
 
 build:
