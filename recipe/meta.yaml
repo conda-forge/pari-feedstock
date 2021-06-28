@@ -1,4 +1,4 @@
-{% set version = "2.11.4" %}
+{% set version = "2.13.2" %}
 {% set name = "pari" %}
 
 package:
@@ -9,15 +9,15 @@ source:
   url:
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bfc88fc4f7352f4840e6e352c72f0369cbea8a45403b1834a6269f3709970b1c
+  sha256: 1679985094a0b723d14f49aa891dbe5ec967aa4040050a2c50bd764ddb3eba24
   patches:
     # Patches from sagemath
     - patches/get_dlcflags.patch
-    - patches/prot_none_cygwin.patch
+    # - patches/prot_none_cygwin.patch
     - patches/pari_mainstack.diff
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
