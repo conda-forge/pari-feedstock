@@ -20,13 +20,17 @@ unset with_gmp_include with_gmp_lib without_gmp
 unset dfltbindir dfltdatadir dfltemacsdir dfltincludedir
 unset dfltlibdir dfltmandir dfltsysdatadir dfltobjdir
 
+if [[ "$variant" == "pthread" ]]; then
+  CONFIG_ARGS="--mt=pthread"
+fi
+
 chmod +x Configure
 ./Configure --prefix="$PREFIX" \
         --with-readline="$PREFIX" \
         --with-gmp="$PREFIX" \
         --with-runtime-perl="$PREFIX/bin/perl" \
         --kernel=gmp \
-        --graphic=none
+        --graphic=none $CONFIG_ARGS
 
 make gp
 
