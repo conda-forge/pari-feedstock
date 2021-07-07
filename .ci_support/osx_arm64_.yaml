@@ -29,3 +29,5 @@ readline:
 - '8'
 target_platform:
 - osx-arm64
+variant:
+- single

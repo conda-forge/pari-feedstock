@@ -1,5 +1,6 @@
 {% set version = "2.13.2" %}
 {% set name = "pari" %}
+{% set build_num = 1 %}
 
 package:
   name: {{ name }}
@@ -17,10 +18,12 @@ source:
     - patches/pari_mainstack.diff
 
 build:
-  number: 0
+  number: {{ build_num }}
   skip: true  # [win]
+  string: h{{ PKG_HASH }}_{{ build_num }}_{{ variant }}
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
+    - pari * *_{{ variant }}
 
 requirements:
   build:

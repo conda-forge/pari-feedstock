@@ -29,6 +29,8 @@ readline:
 - '8'
 target_platform:
 - linux-64
+variant:
+- single
 zip_keys:
 - - cdt_name
   - docker_image
