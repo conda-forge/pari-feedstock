@@ -33,3 +33,5 @@ readline:
 - '8'
 target_platform:
 - linux-aarch64
+variant:
+- single

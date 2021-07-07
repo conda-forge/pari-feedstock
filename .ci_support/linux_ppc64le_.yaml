@@ -29,3 +29,5 @@ readline:
 - '8'
 target_platform:
 - linux-ppc64le
+variant:
+- single
