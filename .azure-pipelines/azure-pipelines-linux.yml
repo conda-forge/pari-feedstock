@@ -8,12 +8,20 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_variantpthread:
-        CONFIG: linux_64_variantpthread
+      linux_64_openssl1.1.1variantpthread:
+        CONFIG: linux_64_openssl1.1.1variantpthread
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
-      linux_64_variantsingle:
-        CONFIG: linux_64_variantsingle
+      linux_64_openssl1.1.1variantsingle:
+        CONFIG: linux_64_openssl1.1.1variantsingle
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
+      linux_64_openssl3variantpthread:
+        CONFIG: linux_64_openssl3variantpthread
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
+      linux_64_openssl3variantsingle:
+        CONFIG: linux_64_openssl3variantsingle
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-comp7
   timeoutInMinutes: 360
