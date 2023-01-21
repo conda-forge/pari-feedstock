@@ -41,140 +41,140 @@ Current build status
               <td>linux_64_openssl1.1.1variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl1.1.1variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl1.1.1variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_openssl1.1.1variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl1.1.1variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl1.1.1variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_openssl3variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl3variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl3variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_openssl3variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_64_openssl3variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_openssl3variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_openssl1.1.1variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_openssl1.1.1variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl1.1.1variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_openssl1.1.1variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_openssl1.1.1variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl1.1.1variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_openssl3variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_openssl3variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl3variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_openssl3variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_openssl3variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_openssl3variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_openssl1.1.1variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_openssl1.1.1variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl1.1.1variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_openssl1.1.1variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_openssl1.1.1variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl1.1.1variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_openssl3variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_openssl3variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl3variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_ppc64le_openssl3variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_openssl3variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_openssl3variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_openssl1.1.1variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl1.1.1variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl1.1.1variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_openssl1.1.1variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl1.1.1variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl1.1.1variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_openssl3variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl3variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl3variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_openssl3variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_64_openssl3variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_openssl3variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_openssl1.1.1variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_openssl1.1.1variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl1.1.1variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_openssl1.1.1variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_openssl1.1.1variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl1.1.1variantsingle" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_openssl3variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_openssl3variantpthread" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl3variantpthread" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_openssl3variantsingle</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx_arm64_openssl3variantsingle" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_openssl3variantsingle" alt="variant">
                 </a>
               </td>
             </tr>
