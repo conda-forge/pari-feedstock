@@ -5,32 +5,14 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.15
+    vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_openssl1.1.1variantpthread:
-        CONFIG: osx_64_openssl1.1.1variantpthread
+      osx_64_variantpthread:
+        CONFIG: osx_64_variantpthread
         UPLOAD_PACKAGES: 'True'
-      osx_64_openssl1.1.1variantsingle:
-        CONFIG: osx_64_openssl1.1.1variantsingle
-        UPLOAD_PACKAGES: 'True'
-      osx_64_openssl3variantpthread:
-        CONFIG: osx_64_openssl3variantpthread
-        UPLOAD_PACKAGES: 'True'
-      osx_64_openssl3variantsingle:
-        CONFIG: osx_64_openssl3variantsingle
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_openssl1.1.1variantpthread:
-        CONFIG: osx_arm64_openssl1.1.1variantpthread
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_openssl1.1.1variantsingle:
-        CONFIG: osx_arm64_openssl1.1.1variantsingle
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_openssl3variantpthread:
-        CONFIG: osx_arm64_openssl3variantpthread
-        UPLOAD_PACKAGES: 'True'
-      osx_arm64_openssl3variantsingle:
-        CONFIG: osx_arm64_openssl3variantsingle
+      osx_64_variantsingle:
+        CONFIG: osx_64_variantsingle
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 
