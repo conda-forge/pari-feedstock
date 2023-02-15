@@ -14,6 +14,8 @@ source:
   patches:
     - 0001-Make-Configure-script-verbose.patch
     - 0002-Do-not-run-get_cc-when-cross-compiling.patch  # [build_platform != target_platform]
+    - 0004-Do-not-run-get_gmp-when-cross-compiling.patch  # [build_platform != target_platform]
+    - 0005-Do-not-run-get_readline-when-cross-compiling.patch  # [build_platform != target_platform]
     # Patches from sagemath
     - patches/get_dlcflags.patch
     # - patches/prot_none_cygwin.patch
