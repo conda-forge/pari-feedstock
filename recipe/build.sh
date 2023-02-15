@@ -24,6 +24,15 @@ if [[ "$variant" == "pthread" ]]; then
   CONFIG_ARGS="--mt=pthread"
 fi
 
+if [[ "$target_platform" != "$build_platform" ]]; then
+  if [[ "$target_platform" == "osx-arm64" ]]; then
+    export target_host="arm64-darwin"
+  else
+    echo "Unknown architecture. Fix build.sh"
+    exit 1
+  fi
+fi
+
 chmod +x Configure
 ./Configure --prefix="$PREFIX" \
         --with-readline="$PREFIX" \
