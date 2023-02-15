@@ -42,7 +42,6 @@ requirements:
     - readline
     - openssl
   run:
-    - gmp
     - readline
     - perl 5.*
     - pari-galdata
