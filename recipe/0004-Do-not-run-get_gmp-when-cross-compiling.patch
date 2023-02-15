@@ -1,4 +1,4 @@
-From f4f5c11762d5f817017fdc5018e0941ce0bc0ea2 Mon Sep 17 00:00:00 2001
+From 442de1731f8d2a9bfeca86177c8c3a8df2345999 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:22:15 +0100
 Subject: [PATCH 4/5] Do not run get_gmp when cross-compiling
@@ -10,7 +10,7 @@ Subject: [PATCH 4/5] Do not run get_gmp when cross-compiling
  delete mode 100644 config/get_gmp
 
 diff --git a/Configure b/Configure
-index 2517209..4a9fc87 100755
+index 2517209..8400896 100755
 --- a/Configure
 +++ b/Configure
 @@ -98,10 +98,12 @@ sizeof_long=8
@@ -23,7 +23,7 @@ index 2517209..4a9fc87 100755
 -fi
 +# Set variables like ./get_gmp would (which does not support cross compilation)
 +gmp=yes
-+GMPLIBS=-L$PREFIX/lib -lgmp
++GMPLIBS="-L$PREFIX/lib -lgmp"
 +GMPINCLUDE=
 +kernlvl1=gmp
 +. ./get_pretty
