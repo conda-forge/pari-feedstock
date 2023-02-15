@@ -1,7 +1,7 @@
 From befdbb64fc403ff383ea656f9b237f3a989e8603 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 14:24:37 +0100
-Subject: [PATCH] Make Configure script verbose
+Subject: [PATCH 1/5] Make Configure script verbose
 
 ---
  Configure | 1 +

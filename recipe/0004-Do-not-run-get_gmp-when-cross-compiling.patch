@@ -1,7 +1,7 @@
-From 21481c9f9fb2af300d2e41885e8961589482a456 Mon Sep 17 00:00:00 2001
+From ee4780d2f8e50e92c10d86e1097a834ce84280ef Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:22:15 +0100
-Subject: [PATCH 1/2] Do not run get_gmp when cross-compiling
+Subject: [PATCH 4/5] Do not run get_gmp when cross-compiling
 
 ---
  Configure      |  10 +++--
@@ -10,7 +10,7 @@ Subject: [PATCH 1/2] Do not run get_gmp when cross-compiling
  delete mode 100644 config/get_gmp
 
 diff --git a/Configure b/Configure
-index 2517209..708715a 100755
+index 2517209..47bc63a 100755
 --- a/Configure
 +++ b/Configure
 @@ -98,10 +98,12 @@ sizeof_long=8
@@ -26,7 +26,7 @@ index 2517209..708715a 100755
 +GMPLIBS=-lgmp
 +GMPINCLUDE=
 +kernlvl1=gmp
-+. config/get_pretty
++. ./get_pretty
  # $_graphic_list
  . ./get_graphic_lib
  # $_readline_list (includes 'readline')

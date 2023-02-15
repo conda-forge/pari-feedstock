@@ -1,7 +1,7 @@
 From 03fc01300b369c892a14444795ef6bcd38f8e29d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 14:31:29 +0100
-Subject: [PATCH] Do not run get_cc when cross compiling
+Subject: [PATCH 2/5] Do not run get_cc when cross compiling
 
 because it tries to run native executables
 ---

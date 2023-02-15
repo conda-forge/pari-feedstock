@@ -1,7 +1,7 @@
 From ed30fa95be52ce570d8bc25a16d62f2ac7aea06c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:13:02 +0100
-Subject: [PATCH] Do not run get_double_format when cross compiling
+Subject: [PATCH 3/5] Do not run get_double_format when cross compiling
 
 ---
  Configure                |  6 +++--
