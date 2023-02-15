@@ -1,0 +1,37 @@
+From 071decb083f30a55b80affe344014af1311d806d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Wed, 15 Feb 2023 21:56:07 +0100
+Subject: [PATCH] More verbose dlld script
+
+---
+ Configure     | 1 +
+ config/get_ld | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/Configure b/Configure
+index e786055..0b3b2d0 100755
+--- a/Configure
++++ b/Configure
+@@ -90,6 +90,7 @@ sizeof_long=8
+ # $_ld_list
+ . ./get_ld
+ # $_dlld_list
++sh ./get_dlld
+ . ./get_dlld
+ # $_perl_list
+ . ./get_perl
+diff --git a/config/get_ld b/config/get_ld
+index c140024..97a9d2f 100644
+--- a/config/get_ld
++++ b/config/get_ld
+@@ -1,5 +1,7 @@
+ # Which Executable Linker ?
+ #
++set -v
++
+ _ld_list='LD LDFLAGS LIBS runpathprexix LDneedsWl LDused GNULDused'
+ case "$osname" in
+   darwin) LIBS= ;;
+-- 
+2.39.1
+
