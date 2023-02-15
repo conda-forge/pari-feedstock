@@ -34,6 +34,7 @@ if [[ "$target_platform" != "$build_platform" ]]; then
 fi
 
 chmod +x Configure
+set -x
 ./Configure --prefix="$PREFIX" \
         --with-readline="$PREFIX" \
         --with-gmp="$PREFIX" \
