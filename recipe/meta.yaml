@@ -1,6 +1,6 @@
 {% set version = "2.15.2" %}
 {% set name = "pari" %}
-{% set build_num = 1 %}
+{% set build_num = "2" %}
 
 package:
   name: {{ name }}
@@ -12,6 +12,11 @@ source:
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
   sha256: b04628111ee22876519a4b1cdafb32febaa34eafa24f9e81f58f8d057fbee0dd
   patches:
+    - 0001-Make-Configure-script-verbose.patch
+    - 0002-Do-not-run-get_cc-when-cross-compiling.patch  # [build_platform != target_platform]
+    - 0003-Do-not-run-get_double_format-when-cross-compiling.patch  # [build_platform != target_platform]
+    - 0004-Do-not-run-get_gmp-when-cross-compiling.patch  # [build_platform != target_platform]
+    - 0005-Do-not-run-get_readline-when-cross-compiling.patch  # [build_platform != target_platform]
     # Patches from sagemath
     - patches/get_dlcflags.patch
     # - patches/prot_none_cygwin.patch
@@ -37,7 +42,6 @@ requirements:
     - readline
     - openssl
   run:
-    - gmp
     - readline
     - perl 5.*
     - pari-galdata
