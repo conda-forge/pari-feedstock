@@ -1,4 +1,4 @@
-From ed30fa95be52ce570d8bc25a16d62f2ac7aea06c Mon Sep 17 00:00:00 2001
+From 211fb65f69a20c5e806a58b7ad07d541324de419 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:13:02 +0100
 Subject: [PATCH 3/5] Do not run get_double_format when cross compiling
@@ -10,7 +10,7 @@ Subject: [PATCH 3/5] Do not run get_double_format when cross compiling
  delete mode 100644 config/get_double_format
 
 diff --git a/Configure b/Configure
-index a6bf51e..2517209 100755
+index be61179..6468d04 100755
 --- a/Configure
 +++ b/Configure
 @@ -79,8 +79,10 @@ ASMINLINE=

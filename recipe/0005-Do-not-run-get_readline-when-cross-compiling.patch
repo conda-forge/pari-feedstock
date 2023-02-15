@@ -1,4 +1,4 @@
-From 6759f26c88514832d27751248b913220d15473c5 Mon Sep 17 00:00:00 2001
+From 8eef5039d1989638ad2d03a9e22204fe5a7216a0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:22:32 +0100
 Subject: [PATCH 5/5] Do not run get_readline when cross-compiling
@@ -10,7 +10,7 @@ Subject: [PATCH 5/5] Do not run get_readline when cross-compiling
  delete mode 100644 config/get_readline
 
 diff --git a/Configure b/Configure
-index 8400896..4f1fb41 100755
+index 0481968..e786055 100755
 --- a/Configure
 +++ b/Configure
 @@ -106,11 +106,11 @@ kernlvl1=gmp

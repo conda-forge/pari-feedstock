@@ -1,4 +1,4 @@
-From 03fc01300b369c892a14444795ef6bcd38f8e29d Mon Sep 17 00:00:00 2001
+From 2e1eff4255f2d330776a93cc768f773775408ca9 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 14:31:29 +0100
 Subject: [PATCH 2/5] Do not run get_cc when cross compiling
@@ -11,7 +11,7 @@ because it tries to run native executables
  delete mode 100644 config/get_cc
 
 diff --git a/Configure b/Configure
-index d0516ae..a6bf51e 100755
+index d0516ae..be61179 100755
 --- a/Configure
 +++ b/Configure
 @@ -68,9 +68,16 @@ EOT
@@ -22,7 +22,7 @@ index d0516ae..a6bf51e 100755
 -. ./get_cc
 -#
 +# Set variables as ./get_cc would (which does not support cross compilation)
-+__gnuc__=
++__gnuc__=clang
 +optimization=full
 +DBGFLAGS=
 +OPTFLAGS=-O2
