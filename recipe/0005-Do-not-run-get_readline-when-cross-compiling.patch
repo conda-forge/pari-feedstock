@@ -1,30 +1,35 @@
-From 2c0d8b9a9f25a77f3d0cc93b2b38a33352635441 Mon Sep 17 00:00:00 2001
+From cd6c02c6c9682e8784fc34eb03ff134c16e18656 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Wed, 15 Feb 2023 15:22:32 +0100
 Subject: [PATCH 5/5] Do not run get_readline when cross-compiling
 
 ---
- Configure           |  5 +++
+ Configure           | 10 ++---
  config/get_readline | 94 ---------------------------------------------
- 2 files changed, 5 insertions(+), 94 deletions(-)
+ 2 files changed, 5 insertions(+), 99 deletions(-)
  delete mode 100644 config/get_readline
 
 diff --git a/Configure b/Configure
-index 47bc63a..2efdf83 100755
+index 47bc63a..1815e5b 100755
 --- a/Configure
 +++ b/Configure
-@@ -106,6 +106,11 @@ kernlvl1=gmp
+@@ -106,11 +106,11 @@ kernlvl1=gmp
  . ./get_pretty
  # $_graphic_list
  . ./get_graphic_lib
+-# $_readline_list (includes 'readline')
+-case "$without_readline" in
+-  yes);;
+-  *) . ./get_readline
+-esac
 +# Set variables like ./get_readline would (which does not support cross compilation)
 +readline=yes
 +readline_version=8.1  # probably does not matter
 +RLINCLUDE=
 +RLLIBS=-lreadline
- # $_readline_list (includes 'readline')
- case "$without_readline" in
-   yes);;
+ #############################################################################
+ case $kernlvl1 in
+ gmp) libpari_base=pari-gmp;;
 diff --git a/config/get_readline b/config/get_readline
 deleted file mode 100644
 index 2972140..0000000
