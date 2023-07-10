@@ -1,4 +1,4 @@
-{% set version = "2.15.3" %}
+{% set version = "2.15.4" %}
 {% set name = "pari" %}
 {% set build_num = "2" %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: adf5a58638cdafd72a8b48bc9f444972b23329c8d545a1d3ed1bbeb1b6569268
+  sha256: c3545bfee0c6dfb40b77fb4bbabaf999d82e60069b9f6d28bcb6cf004c8c5c0f
   patches:
     - 0001-Make-Configure-script-verbose.patch
     - 0002-Do-not-run-get_cc-when-cross-compiling.patch  # [build_platform != target_platform]
