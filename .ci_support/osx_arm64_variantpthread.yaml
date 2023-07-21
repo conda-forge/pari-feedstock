@@ -3,13 +3,13 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '14'
+- '15'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 curl:
-- '7'
+- '8'
 gmp:
 - '6'
 macos_machine:
