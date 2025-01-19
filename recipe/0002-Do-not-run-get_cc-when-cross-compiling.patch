@@ -5,35 +5,8 @@ Subject: [PATCH 2/5] Do not run get_cc when cross compiling
 
 because it tries to run native executables
 ---
- Configure     |  13 ++++-
- config/get_cc | 154 --------------------------------------------------
- 2 files changed, 10 insertions(+), 157 deletions(-)
  delete mode 100644 config/get_cc
 
-diff --git a/Configure b/Configure
-index d0516ae..be61179 100755
---- a/Configure
-+++ b/Configure
-@@ -68,9 +68,16 @@ EOT
- exec 5>> $config_log
- 
- ####################### CONFIGURE - COMPILATION #############################
--# $_cc_list (includes 'optimization'), extraflag
--. ./get_cc
--#
-+# Set variables as ./get_cc would (which does not support cross compilation)
-+__gnuc__=clang
-+optimization=full
-+DBGFLAGS=
-+OPTFLAGS=-O2
-+exe_suffix=
-+suffix=
-+ASMINLINE=
-+KERNELCFLAGS=
-+
- . ./get_mt
- # doubleformat, sizeof_long
- . ./get_double_format
 diff --git a/config/get_cc b/config/get_cc
 deleted file mode 100644
 index 2d61d38..0000000
