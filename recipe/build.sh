@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ "$target_platform" == "win-64" ]]; then
+  export PREFIX=${PREFIX}/Library
+fi
+
 export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
 export CFLAGS="-g $CFLAGS"
 export CXXFLAGS="-g $CXXFLAGS"
@@ -35,6 +39,8 @@ case $target_platform in
     export target_host="aarch64-linux" ;;
   linux-64)
     export target_host="x86_64-linux" ;;
+  win-64)
+    export target_host="x86_64-mingw" ;;
   *)
     echo "Unknown architecture. Fix build.sh"
     exit 1
