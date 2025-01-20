@@ -60,7 +60,7 @@ test:
     - test -f ${PREFIX}/lib/libpari${SHLIB_EXT}  # [unix]
     - if not exist %LIBRARY_INC%\pari\pari.h exit 1      # [win]
     - if not exist %LIBRARY_INC%\pari\anal.h exit 1      # [win]
-    - if not exist %LIBRARY_BIN%\pari.dll exit 1         # [win]
+    - if not exist %LIBRARY_BIN%\libpari-tls.dll exit 1         # [win]
 
 about:
   home: http://pari.math.u-bordeaux.fr
