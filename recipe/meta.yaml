@@ -38,7 +38,6 @@ requirements:
     - {{ stdlib("m2w64_c") }}      # [win]
     - {{ posix }}base        # [build_platform.startswith("win-")]
     - {{ posix }}diffutils   # [build_platform.startswith("win-")]
-    - libtool
     - curl
     - {{ posix }}make
     - perl 5.*
