@@ -65,12 +65,12 @@ set -x
 echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
-make gp
+make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 
 if [ "$target_platform" == "linux-64" ]
 then
     make test-all;
 fi
 
-make install install-lib-sta
+make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 cp "src/language/anal.h" "$PREFIX/include/pari/anal.h"
