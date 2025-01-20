@@ -63,6 +63,9 @@ set -x
         --host=$target_host \
         --graphic=none $CONFIG_ARGS
 
+find . -name "paricfg.h" -exec cat {} +
+
+
 make gp
 
 if [ "$target_platform" == "linux-64" ]
