@@ -1,6 +1,7 @@
 {% set version = "2.17.1" %}
 {% set name = "pari" %}
 {% set build_num = "2" %}
+{% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
   name: {{ name }}
@@ -25,7 +26,6 @@ source:
 
 build:
   number: {{ build_num }}
-  skip: true  # [win]
   string: h{{ PKG_HASH }}_{{ build_num }}_{{ variant }}
   run_exports:
     - {{ pin_subpackage('pari', max_pin='x.x') }}
@@ -33,29 +33,37 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - libtool
+    - {{ compiler("c") }}          # [unix]
+    - {{ stdlib("c") }}            # [unix]
+    - {{ compiler("m2w64_c") }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ posix }}base        # [build_platform.startswith("win-")]
+    - {{ posix }}diffutils   # [build_platform.startswith("win-")]
     - curl
-    - make
+    - {{ posix }}make
+    - bison         # [unix]
+    - winflexbison  # [win]
     - perl 5.*
   host:
     - gmp
-    - readline
+    - readline  # [unix]
     - openssl
   run:
-    - readline
     - perl 5.*
     - pari-galdata
     - pari-seadata-small
 
 test:
   commands:
-    - test -f ${PREFIX}/include/{{ name }}/{{ name }}.h
-    - test -f ${PREFIX}/include/{{ name }}/anal.h
-    - test -f ${PREFIX}/lib/lib{{ name }}.a
-    - test -f ${PREFIX}/lib/lib{{ name }}.dylib  # [osx]
-    - test -f ${PREFIX}/lib/lib{{ name }}.so     # [linux]
+    - test -f ${PREFIX}/include/pari/pari.h      # [unix]
+    - test -f ${PREFIX}/include/pari/anal.h      # [unix]
+    - test -f ${PREFIX}/lib/libpari.a            # [unix]
+    - test -f ${PREFIX}/lib/libpari${SHLIB_EXT}  # [unix]
+    - if not exist %LIBRARY_INC%\pari\pari.h exit 1      # [win]
+    - if not exist %LIBRARY_INC%\pari\anal.h exit 1      # [win]
+    - if not exist %LIBRARY_BIN%\libpari.dll exit 1      # [win]
+    - if not exist %LIBRARY_BIN%\libpari-gmp.dll exit 1      # [win and variant == "single"]
+    - if not exist %LIBRARY_BIN%\libpari-gmp-tls.dll exit 1  # [win and variant == "pthread"]
 
 about:
   home: http://pari.math.u-bordeaux.fr
