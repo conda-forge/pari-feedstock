@@ -1,0 +1,30 @@
+From 324c2330288c34e850591f81f558a88e851223e7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Wed, 15 Feb 2023 14:31:29 +0100
+Subject: [PATCH 2/5] Set RUNTEST=echo when cross compiling
+
+because it tries to run native executables otherwise
+---
+ Configure | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Configure b/Configure
+index d0516ae..108ad49 100755
+--- a/Configure
++++ b/Configure
+@@ -68,9 +68,10 @@ EOT
+ exec 5>> $config_log
+ 
+ ####################### CONFIGURE - COMPILATION #############################
+-# $_cc_list (includes 'optimization'), extraflag
++export RUNTEST=echo
+ . ./get_cc
+-#
++unset RUNTEST
++
+ . ./get_mt
+ # doubleformat, sizeof_long
+ . ./get_double_format
+-- 
+2.43.0
+

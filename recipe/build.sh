@@ -24,14 +24,22 @@ if [[ "$variant" == "pthread" ]]; then
   CONFIG_ARGS="--mt=pthread"
 fi
 
-if [[ "$target_platform" != "$build_platform" ]]; then
-  if [[ "$target_platform" == "osx-arm64" ]]; then
-    export target_host="arm64-darwin"
-  else
+case $target_platform in
+  osx-64)
+    export target_host="x86_64-darwin" ;;
+  osx-arm64)
+    export target_host="arm64-darwin" ;;
+  linux-ppc64le)
+    export target_host="ppc64le-linux" ;;
+  linux-aarch64)
+    export target_host="aarch64-linux" ;;
+  linux-64)
+    export target_host="x86_64-linux" ;;
+  *)
     echo "Unknown architecture. Fix build.sh"
     exit 1
-  fi
-fi
+    ;;
+esac
 
 chmod +x Configure
 set -x
@@ -40,6 +48,7 @@ set -x
         --with-gmp="$PREFIX" \
         --with-runtime-perl="$PREFIX/bin/perl" \
         --kernel=gmp \
+        --host=$target_host \
         --graphic=none $CONFIG_ARGS
 
 make gp

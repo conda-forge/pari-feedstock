@@ -1,4 +1,4 @@
-{% set version = "2.15.5" %}
+{% set version = "2.17.1" %}
 {% set name = "pari" %}
 {% set build_num = "2" %}
 
@@ -10,13 +10,14 @@ source:
   url:
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0efdda7515d9d954f63324c34b34c560e60f73a81c3924a71260a2cc91d5f981
+  sha256: 67ba6f3071233725258541e4f174b5efbc64c65ae5115bade9edfc45f1fde5dc
   patches:
-    - 0001-Make-Configure-script-verbose.patch
-    - 0002-Do-not-run-get_cc-when-cross-compiling.patch  # [build_platform != target_platform]
-    - 0003-Do-not-run-get_double_format-when-cross-compiling.patch  # [build_platform != target_platform]
-    - 0004-Do-not-run-get_gmp-when-cross-compiling.patch  # [build_platform != target_platform]
-    - 0005-Do-not-run-get_readline-when-cross-compiling.patch  # [build_platform != target_platform]
+    - patches/0001-Make-Configure-script-verbose.patch
+    - patches/0002-Set-RUNTEST-echo-when-cross-compiling.patch  # [build_platform != target_platform]
+    - patches/0003-Do-not-run-get_double_format-when-cross-compiling.patch  # [build_platform != target_platform]
+    - patches/0004-Do-not-run-get_gmp-when-cross-compiling.patch  # [build_platform != target_platform]
+    - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch  # [build_platform != target_platform]
+    - patches/0006-Fix-config-objdir-when-cross-compiling.patch  # [build_platform != target_platform]
     # Patches from sagemath
     - patches/get_dlcflags.patch
     # - patches/prot_none_cygwin.patch
@@ -33,6 +34,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - libtool
     - curl
     - make

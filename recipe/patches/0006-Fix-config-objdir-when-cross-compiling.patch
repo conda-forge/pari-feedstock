@@ -1,0 +1,29 @@
+From 3e52780fca1506f8539b4a47ca63c7d9671a81ab Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <ifernando@quansight.com>
+Date: Mon, 20 Jan 2025 07:08:49 +0000
+Subject: [PATCH 6/6] Fix config/objdir when cross compiling
+
+---
+ config/objdir | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/config/objdir b/config/objdir
+index c9606e2..ead2165 100755
+--- a/config/objdir
++++ b/config/objdir
+@@ -1,7 +1,9 @@
+ #! /bin/sh
+ 
+-tmp_host=`config/arch-osname`
+-arch=`echo "$tmp_host" | sed -e 's/\(.*\)-.*/\1/'`
+-osname=`echo "$tmp_host" | sed -e 's/.*-\(.*\)/\1/'`
++if test -z "$target_host"; then
++  target_host=`./arch-osname`
++fi
++arch=`echo "$target_host" | sed -e 's/\(.*\)-.*/\1/'`
++osname=`echo "$target_host" | sed -e 's/.*-\(.*\)/\1/'`
+ objdir=O$osname-$arch;
+ echo $objdir
+-- 
+2.43.0
+
