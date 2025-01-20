@@ -50,6 +50,7 @@ set -x
         --with-gmp="$PREFIX" \
         --with-runtime-perl="$PREFIX/bin/perl" \
         --kernel=gmp \
+        --host=$target_host \
         --graphic=none $CONFIG_ARGS
 
 make gp
