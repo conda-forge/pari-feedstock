@@ -63,8 +63,11 @@ set -x
         --host=$target_host \
         --graphic=none $CONFIG_ARGS
 
+echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
+echo "Makefile"
+find Omingw* -name "Makefile" -exec cat {} +
 
 make gp
 
