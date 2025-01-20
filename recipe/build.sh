@@ -24,24 +24,22 @@ if [[ "$variant" == "pthread" ]]; then
   CONFIG_ARGS="--mt=pthread"
 fi
 
-if [[ "$target_platform" != "$build_platform" ]]; then
-  case $target_platform in
-    osx-64)
-      export target_host="x86_64-darwin" ;;
-    osx-arm64)
-      export target_host="arm64-darwin" ;;
-    linux-ppc64le)
-      export target_host="ppc64le-linux" ;;
-    linux-aarch64)
-      export target_host="aarch64-linux" ;;
-    linux-64)
-      export target_host="x86_64-linux" ;;
-    *)
-      echo "Unknown architecture. Fix build.sh"
-      exit 1
-      ;;
-  esac
-fi
+case $target_platform in
+  osx-64)
+    export target_host="x86_64-darwin" ;;
+  osx-arm64)
+    export target_host="arm64-darwin" ;;
+  linux-ppc64le)
+    export target_host="ppc64le-linux" ;;
+  linux-aarch64)
+    export target_host="aarch64-linux" ;;
+  linux-64)
+    export target_host="x86_64-linux" ;;
+  *)
+    echo "Unknown architecture. Fix build.sh"
+    exit 1
+    ;;
+esac
 
 chmod +x Configure
 set -x
