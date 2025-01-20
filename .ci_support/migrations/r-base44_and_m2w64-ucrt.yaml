@@ -8,7 +8,14 @@ __migrator:
   automerge: True
   longterm: True
   include_noarch: True
-  pr_limit: 4
+  include_build: True
+  pr_limit: 40
+  override_cbc_keys:
+    - r-base
+    - r_base
+    - m2w64_c_compiler_stub
+    - m2w64_cxx_compiler_stub
+    - m2w64_fortran_compiler_stub
   ordering:
     m2w64_c_compiler:
       - m2w64-toolchain
@@ -22,7 +29,6 @@ __migrator:
     m2w64_c_stdlib:
       - m2w64-toolchain
       - m2w64-sysroot
-
 
 r_base:
   - 4.3
@@ -43,3 +49,5 @@ m2w64_c_stdlib:                   # [win]
   - m2w64-sysroot                 # [win]
 m2w64_c_stdlib_version:           # [win]
   - 12                            # [win]
+m2w64_toolchain:                  # [win]
+  - disabled                      # [win]
