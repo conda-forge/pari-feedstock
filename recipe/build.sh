@@ -1,11 +1,10 @@
 #!/bin/bash
 
 if [[ "$target_platform" == "win-64" ]]; then
-  export PREFIX=${PREFIX}/Library
+  export PREFIX=$(cygpath -u ${PREFIX}/Library)
   cp ${BUILD_PREFIX}/Library/bin/win_bison.exe ${BUILD_PREFIX}/Library/bin/bison.exe
 fi
 
-export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
 export CFLAGS="-g $CFLAGS"
 export CXXFLAGS="-g $CXXFLAGS"
 # pari sends LDFLAGS to LD if set, but LDFLAGS are meant for the compiler to pass to linker.
