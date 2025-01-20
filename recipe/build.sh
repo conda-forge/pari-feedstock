@@ -28,6 +28,12 @@ if [[ "$variant" == "pthread" ]]; then
   CONFIG_ARGS="--mt=pthread"
 fi
 
+if [[ "$target_platform" == "win-"* ]]; then
+  CONFIG_ARGS="$CONFIG_ARGS --without-readline"
+else
+  CONFIG_ARGS="$CONFIG_ARGS --with-readline=$PREFIX"
+fi
+
 case $target_platform in
   osx-64)
     export target_host="x86_64-darwin" ;;
@@ -50,7 +56,6 @@ esac
 chmod +x Configure
 set -x
 ./Configure --prefix="$PREFIX" \
-        --with-readline="$PREFIX" \
         --with-gmp="$PREFIX" \
         --with-runtime-perl="$PREFIX/bin/perl" \
         --kernel=gmp \

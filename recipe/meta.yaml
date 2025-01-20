@@ -43,10 +43,9 @@ requirements:
     - perl 5.*
   host:
     - gmp
-    - readline
+    - readline  # [unix]
     - openssl
   run:
-    - readline
     - perl 5.*
     - pari-galdata
     - pari-seadata-small
