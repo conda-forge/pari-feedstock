@@ -40,7 +40,8 @@ requirements:
     - {{ posix }}diffutils   # [build_platform.startswith("win-")]
     - curl
     - {{ posix }}make
-    - {{ posix }}bison
+    - bison         # [unix]
+    - winflexbison  # [win]
     - perl 5.*
   host:
     - gmp

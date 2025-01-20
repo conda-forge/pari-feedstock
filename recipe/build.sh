@@ -2,6 +2,7 @@
 
 if [[ "$target_platform" == "win-64" ]]; then
   export PREFIX=${PREFIX}/Library
+  cp ${BUILD_PREFIX}/Library/bin/win_bison.exe ${BUILD_PREFIX}/Library/bin/bison.exe
 fi
 
 export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
