@@ -20,7 +20,7 @@ unset static tune timing_fun error
 unset enable_tls
 unset with_fltk with_qt
 unset with_ncurses_lib
-unset with_readline_include with_readline_lib without_readline
+unset with_readline_include with_readline_lib without_readline readline
 unset with_gmp_include with_gmp_lib without_gmp
 unset dfltbindir dfltdatadir dfltemacsdir dfltincludedir
 unset dfltlibdir dfltmandir dfltsysdatadir dfltobjdir
