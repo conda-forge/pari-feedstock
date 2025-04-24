@@ -18,8 +18,6 @@ openssl:
 - '3'
 pari:
 - 2.15.* *_pthread
-readline:
-- '8'
 target_platform:
 - win-64
 variant:
