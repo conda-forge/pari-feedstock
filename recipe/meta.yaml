@@ -1,6 +1,6 @@
 {% set version = "2.17.2" %}
 {% set name = "pari" %}
-{% set build_num = "2" %}
+{% set build_num = "3" %}
 {% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
@@ -16,8 +16,12 @@ source:
     - patches/0001-Make-Configure-script-verbose.patch
     - patches/0002-Set-RUNTEST-echo-when-cross-compiling.patch  # [build_platform != target_platform]
     - patches/0003-Do-not-run-get_double_format-when-cross-compiling.patch  # [build_platform != target_platform]
-    - patches/0004-Do-not-run-get_gmp-when-cross-compiling.patch  # [build_platform != target_platform]
-    - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch  # [build_platform != target_platform]
+    # Do not check for GMP. The script fails to detect our GMP in the
+    # conda-prefix. (And it also does not work when cross-compiling.)
+    - patches/0004-Do-not-run-get_gmp-when-cross-compiling.patch
+    # Do not check for readline. The script fails to detect our GMP in the
+    # conda-prefix. (And it also does not work when cross-compiling.)
+    - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch
     - patches/0006-Fix-config-objdir-when-cross-compiling.patch  # [build_platform != target_platform]
     # Patches from sagemath
     - patches/get_dlcflags.patch
