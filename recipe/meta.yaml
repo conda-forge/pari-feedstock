@@ -19,7 +19,7 @@ source:
     # Do not check for GMP. The script fails to detect our GMP in the
     # conda-prefix. (And it also does not work when cross-compiling.)
     - patches/0004-Do-not-run-get_gmp-when-cross-compiling.patch
-    # Do not check for readline. The script fails to detect our GMP in the
+    # Do not check for readline. The script fails to detect our readline in the
     # conda-prefix. (And it also does not work when cross-compiling.)
     - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch
     - patches/0006-Fix-config-objdir-when-cross-compiling.patch  # [build_platform != target_platform]
