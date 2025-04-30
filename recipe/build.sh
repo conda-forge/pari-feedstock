@@ -63,7 +63,7 @@ set -x
         --graphic=none $CONFIG_ARGS
 
 echo "paricfg.h"
-find . -name "paricfg.h" -exec cat {} +
+find . -name "paricfg.h" -exec cat {} | grep GMP +
 
 make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 

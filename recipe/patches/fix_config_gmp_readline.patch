@@ -1,0 +1,26 @@
+diff --git a/config/get_gmp b/config/get_gmp
+index 3fd6487..094cf7c 100644
+--- a/config/get_gmp
++++ b/config/get_gmp
+@@ -58,7 +58,7 @@ case "$gmp_version" in
+ esac
+ 
+ if test -n "$gmp"; then
+-  cmd="$CC $CFLAGS $extraflag $GMPINCLUDE -o $exe gmp_mismatch.c $GMPLIBS"
++  cmd="$CC $CFLAGS $extraflag $GMPINCLUDE -o $exe gmp_mismatch.c $GMPLIBS $LDFLAGS"
+   . log_cmd
+   if test ! -r $exe; then
+     gmp=
+diff --git a/config/get_readline b/config/get_readline
+index 2972140..8e79884 100644
+--- a/config/get_readline
++++ b/config/get_readline
+@@ -25,7 +25,7 @@ case $x in
+ esac
+ 
+ exe=$osname-$arch-rlv$$$exe_suff
+-cmd0="$CC $CFLAGS $extraflag $RLINCLUDE -o $exe rl_version.c"
++cmd0="$CC $CFLAGS $extraflag $RLINCLUDE -o $exe rl_version.c $LDFLAGS"
+ try() { RLLIBS=$1; cmd="$cmd0 $1"; . log_cmd; }
+ 
+ if test -n "$with_readline_lib"; then
