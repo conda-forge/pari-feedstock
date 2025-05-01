@@ -59,17 +59,19 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/pari/pari.h                  # [unix]
-    - test -f ${PREFIX}/include/pari/anal.h                  # [unix]
-    - test -f ${PREFIX}/lib/libpari.a                        # [unix]
-    - test -f ${PREFIX}/lib/libpari${SHLIB_EXT}              # [unix]
-    - test -f ${PREFIX}/lib/libpari-gmp${SHLIB_EXT}          # [unix and variant == "single"]
-    - test -f ${PREFIX}/lib/libpari-gmp-tls${SHLIB_EXT}      # [unix and variant == "pthread"]
-    - if not exist %LIBRARY_INC%\pari\pari.h exit 1          # [win]
-    - if not exist %LIBRARY_INC%\pari\anal.h exit 1          # [win]
-    - if not exist %LIBRARY_BIN%\libpari.dll exit 1          # [win]
-    - if not exist %LIBRARY_BIN%\libpari-gmp.dll exit 1      # [win and variant == "single"]
-    - if not exist %LIBRARY_BIN%\libpari-gmp-tls.dll exit 1  # [win and variant == "pthread"]
+    - test -f ${PREFIX}/include/pari/pari.h                                # [unix]
+    - test -f ${PREFIX}/include/pari/anal.h                                # [unix]
+    - test -f ${PREFIX}/lib/libpari.a                                      # [unix]
+    - test -f ${PREFIX}/lib/libpari${SHLIB_EXT}                            # [unix]
+    - test -f ${PREFIX}/lib/libpari-gmp${SHLIB_EXT}                        # [osx and variant == "single"]
+    - test -f ${PREFIX}/lib/libpari-gmp-tls${SHLIB_EXT}                    # [osx and variant == "pthread"]
+    - test -f ${PREFIX}/lib/libpari-gmp${SHLIB_EXT}.{{ version }}          # [linux and variant == "single"]
+    - test -f ${PREFIX}/lib/libpari-gmp-tls${SHLIB_EXT}.{{ version }}      # [linux and variant == "pthread"]
+    - if not exist %LIBRARY_INC%\pari\pari.h exit 1                        # [win]
+    - if not exist %LIBRARY_INC%\pari\anal.h exit 1                        # [win]
+    - if not exist %LIBRARY_BIN%\libpari.dll exit 1                        # [win]
+    - if not exist %LIBRARY_BIN%\libpari-gmp.dll exit 1                    # [win and variant == "single"]
+    - if not exist %LIBRARY_BIN%\libpari-gmp-tls.dll exit 1                # [win and variant == "pthread"]
 
 about:
   home: http://pari.math.u-bordeaux.fr
