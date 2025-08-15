@@ -1,6 +1,6 @@
 {% set version = "2.17.2" %}
 {% set name = "pari" %}
-{% set build_num = "4" %}
+{% set build_num = "5" %}
 {% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
@@ -70,6 +70,8 @@ test:
     - if not exist %LIBRARY_INC%\pari\pari.h exit 1                        # [win]
     - if not exist %LIBRARY_INC%\pari\anal.h exit 1                        # [win]
     - if not exist %LIBRARY_BIN%\libpari.dll exit 1                        # [win]
+    - if not exist %LIBRARY_LIB%\libpari.dll.a exit 1                      # [win]
+    - if not exist %LIBRARY_LIB%\libpari.lib exit 1                        # [win]
     - if not exist %LIBRARY_BIN%\libpari-gmp.dll exit 1                    # [win and variant == "single"]
     - if not exist %LIBRARY_BIN%\libpari-gmp-tls.dll exit 1                # [win and variant == "pthread"]
 
