@@ -74,3 +74,19 @@ fi
 
 make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 cp "src/language/anal.h" "$PREFIX/include/pari/anal.h"
+
+# Relocate Windows import libraries (libpari*.dll.a) from bin -> lib
+# so that linkers find them in the conventional location.
+# Also create lib file for MSVC compiler.
+if [[ "$target_platform" == win-* ]]; then
+  mkdir -p "$PREFIX/lib"
+  for implib in "$PREFIX"/bin/libpari*.dll.a; do
+    basename=$(basename "$implib" .dll.a)
+    echo "Relocating import library $implib to /lib/";
+    mv "$implib" "$PREFIX/lib/" || exit 1
+
+    echo "Generating lib file for $basename"
+    gendef "$PREFIX/bin/$basename.dll"
+    $HOST-dlltool -d "$basename.def" -l "$PREFIX/lib/$basename.lib"
+  done
+fi
