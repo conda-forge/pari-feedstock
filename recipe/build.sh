@@ -113,20 +113,27 @@ if [[ "$target_platform" == win-* ]]; then
   cd ..
 fi
 
-if [ "$build_platform" == "$target_platform" ]
-then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
     make test-all;
 fi
 
 make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 cp "src/language/anal.h" "$PREFIX/include/pari/anal.h"
 
-# Relocate Windows import libraries (libpari*.dll.a) from bin -> lib
-# so that linkers find them in the conventional location.
-# Also create lib file for MSVC compiler.
+# Relocate Windows libraries from bin -> lib so that linkers find them
+# in the conventional location.
 if [[ "$target_platform" == win-* ]]; then
   mkdir -p "$PREFIX/lib"
+
+  # Relocate static library (libpari.a) from bin to lib
+  if [ -f "$PREFIX/bin/libpari.a" ]; then
+    echo "Relocating static library libpari.a to /lib/"
+    mv "$PREFIX/bin/libpari.a" "$PREFIX/lib/" || exit 1
+  fi
+
+  # Relocate import libraries (libpari*.dll.a) and create MSVC .lib files
   for implib in "$PREFIX"/bin/libpari*.dll.a; do
+    [ -e "$implib" ] || continue
     basename=$(basename "$implib" .dll.a)
     echo "Relocating import library $implib to /lib/";
     mv "$implib" "$PREFIX/lib/" || exit 1
