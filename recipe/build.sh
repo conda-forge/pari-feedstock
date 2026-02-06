@@ -65,9 +65,55 @@ set -x
 echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
-make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
 
-if [ "$target_platform" == "linux-64" ]
+# Workaround: dlltool --export-all-symbols segfaults on Windows with many
+# object files (binutils 2.45.x). If the .def files were not generated,
+# create them manually using nm with proper DATA annotations.
+if [[ "$target_platform" == win-* ]]; then
+  cd O*
+  if [ ! -f libpari.def ] || [ ! -f libpari_exe.def ]; then
+    echo "=== dlltool segfault workaround: generating .def files via nm ==="
+    # Extract OBJS list from Makefile (library objects only, not OBJSGP)
+    OBJS=$(grep '^OBJS ' Makefile | sed 's/^OBJS *= *//' | sed 's/\$(_O)/.o/g')
+
+    # Text/code symbols
+    ${HOST}-nm -g --defined-only $OBJS 2>/dev/null | grep ' [T] ' | awk '{print $3}' | sort -u > _text_syms.txt
+    # Data symbols (BSS, Data, Read-only) — must be marked DATA in .def
+    ${HOST}-nm -g --defined-only $OBJS 2>/dev/null | grep ' [BDR] ' | awk '{print $3}' | sort -u > _data_syms.txt
+
+    echo "Found $(wc -l < _text_syms.txt) text + $(wc -l < _data_syms.txt) data symbols"
+
+    for deftype in lib exe; do
+      if [ "$deftype" = "lib" ]; then
+        deffile="libpari.def"
+        echo "LIBRARY libpari" > "$deffile"
+      else
+        deffile="libpari_exe.def"
+        echo "NAME libpari_exe" > "$deffile"
+      fi
+      echo "EXPORTS" >> "$deffile"
+      i=1
+      while read sym; do
+        echo "    $sym @ $i" >> "$deffile"
+        i=$((i + 1))
+      done < _text_syms.txt
+      while read sym; do
+        echo "    $sym @ $i DATA" >> "$deffile"
+        i=$((i + 1))
+      done < _data_syms.txt
+    done
+
+    rm -f _text_syms.txt _data_syms.txt
+    echo "Generated libpari.def and libpari_exe.def"
+
+    # Rebuild with the manually generated .def files
+    make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+  fi
+  cd ..
+fi
+
+if [ "$build_platform" == "$target_platform" ]
 then
     make test-all;
 fi
