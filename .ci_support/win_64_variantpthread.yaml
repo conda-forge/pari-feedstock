@@ -9,15 +9,15 @@ gmp:
 m2w64_c_compiler:
 - gcc
 m2w64_c_compiler_version:
-- '13'
+- '14'
 m2w64_c_stdlib:
 - m2w64-sysroot
 m2w64_c_stdlib_version:
 - '12'
 openssl:
-- '3'
+- '3.5'
 pari:
-- 2.15.* *_pthread
+- 2.17.* *_pthread
 target_platform:
 - win-64
 variant:
