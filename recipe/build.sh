@@ -65,6 +65,13 @@ set -x
 echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
+# Conda-build sets hundreds of environment variables (CONDA_BACKUP_*,
+# __CONDA_SAVED_*, etc.) that can exceed MSYS2 limits, causing
+# "environment is too large for exec" in xargs/make sub-processes.
+if [[ "$target_platform" == win-* ]]; then
+  for v in $(compgen -v | grep -E '^(CONDA_BACKUP_|__CONDA_SAVED_)'); do unset "$v"; done
+fi
+
 make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
 
 # Workaround: dlltool --export-all-symbols segfaults on Windows with many
@@ -118,12 +125,7 @@ if [[ "$target_platform" == win-* ]]; then
 fi
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
-    if [[ "$target_platform" == win-* ]]; then
-        # Conda-build sets many large environment variables that exceed
-        # MSYS2 limits, causing "environment is too large for exec" in xargs.
-        for v in ${!CONDA_BACKUP_@}; do unset "$v"; done
-    fi
-    make test-all;
+    make test-all
 fi
 
 make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
