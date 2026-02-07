@@ -26,6 +26,16 @@ unset dfltlibdir dfltmandir dfltsysdatadir dfltobjdir
 
 if [[ "$variant" == "pthread" ]]; then
   CONFIG_ARGS="--mt=pthread"
+  if [[ "$target_platform" == "win-"* ]]; then
+    # On Windows, GCC uses emulated TLS (__emutls). By default, the DLL
+    # links with shared libgcc (-lgcc_s) and the exe with static libgcc
+    # (-lgcc -lgcc_eh), giving them separate __emutls slot tables. This
+    # causes PARI's __thread variables (avma, pari_mainstack, etc.) to
+    # have different storage in inline code (exe) vs library code (DLL),
+    # leading to hangs/crashes in gp-dyn. Fix: force the exe to also use
+    # shared libgcc so both share the same __emutls instance.
+    export LDFLAGS="$LDFLAGS -shared-libgcc"
+  fi
 fi
 
 if [[ "$target_platform" == "win-"* ]]; then
@@ -65,36 +75,37 @@ set -x
 echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
-# On Windows (MSYS2), conda-build's huge environment (hundreds of
-# CONDA_BACKUP_*, __CONDA_SAVED_*, etc. variables) exceeds the exec()
-# size limit, breaking xargs and other tools invoked by make.
-# Work around this by running make through env -i with only the
-# variables it actually needs.
+# On Windows (MSYS2), conda-build + Azure CI set a huge environment
+# that exceeds MSYS2's exec() limits, breaking xargs/make sub-processes.
+# Fix: save the variables we need, wipe everything, restore them.
 if [[ "$target_platform" == win-* ]]; then
-  echo "=== Environment debug info ==="
-  echo "Total env vars: $(env | wc -l)"
-  echo "Total env size (bytes): $(env | wc -c)"
-  echo "Top variable prefixes:"
-  env | cut -d= -f1 | sed 's/_[^_]*$//' | sort | uniq -c | sort -rn | head -20
-  echo "Largest variables (top 20):"
-  env | awk -F= '{printf "%6d %s\n", length($0), $1}' | sort -rn | head -20
-  echo "==============================="
-  _make() {
-    env -i \
-      PATH="$PATH" \
-      HOME="$HOME" \
-      SHELL="${SHELL:-/bin/bash}" \
-      MSYSTEM="${MSYSTEM:-}" \
-      MSYS2_PATH_TYPE="${MSYS2_PATH_TYPE:-}" \
-      PREFIX="$PREFIX" \
-      HOST="${HOST:-}" \
-      make "$@"
-  }
-else
-  _make() { make "$@"; }
+  echo "=== Cleaning environment ($(env | wc -l) vars, $(env | wc -c) bytes) ==="
+  _save_PATH="$PATH"
+  _save_HOME="$HOME"
+  _save_SHELL="${SHELL:-/bin/bash}"
+  _save_MSYSTEM="${MSYSTEM:-}"
+  _save_MSYS2_PATH_TYPE="${MSYS2_PATH_TYPE:-}"
+  _save_PREFIX="$PREFIX"
+  _save_HOST="${HOST:-}"
+  _save_target_platform="$target_platform"
+  _save_CONDA_BUILD_CROSS_COMPILATION="${CONDA_BUILD_CROSS_COMPILATION:-}"
+  for _v in $(env | cut -d= -f1); do
+    unset "$_v" 2>/dev/null || true
+  done
+  export PATH="$_save_PATH"
+  export HOME="$_save_HOME"
+  export SHELL="$_save_SHELL"
+  export MSYSTEM="$_save_MSYSTEM"
+  export MSYS2_PATH_TYPE="$_save_MSYS2_PATH_TYPE"
+  export PREFIX="$_save_PREFIX"
+  export HOST="$_save_HOST"
+  export target_platform="$_save_target_platform"
+  export CONDA_BUILD_CROSS_COMPILATION="$_save_CONDA_BUILD_CROSS_COMPILATION"
+  unset "${!_save_@}"
+  echo "=== Environment cleaned ($(env | wc -l) vars, $(env | wc -c) bytes) ==="
 fi
 
-_make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
+make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
 
 # Workaround: dlltool --export-all-symbols segfaults on Windows with many
 # object files (binutils 2.45.x). If the .def files were not generated,
@@ -141,16 +152,16 @@ if [[ "$target_platform" == win-* ]]; then
     echo "Generated libpari.def and libpari_exe.def"
 
     # Rebuild with the manually generated .def files
-    _make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+    make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
   fi
   cd ..
 fi
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
-    _make test-all
+    make test-all
 fi
 
-_make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 cp "src/language/anal.h" "$PREFIX/include/pari/anal.h"
 
 # Relocate Windows libraries from bin -> lib so that linkers find them
