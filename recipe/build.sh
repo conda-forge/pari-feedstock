@@ -65,14 +65,36 @@ set -x
 echo "paricfg.h"
 find . -name "paricfg.h" -exec cat {} +
 
-# Conda-build sets hundreds of environment variables (CONDA_BACKUP_*,
-# __CONDA_SAVED_*, etc.) that can exceed MSYS2 limits, causing
-# "environment is too large for exec" in xargs/make sub-processes.
+# On Windows (MSYS2), conda-build's huge environment (hundreds of
+# CONDA_BACKUP_*, __CONDA_SAVED_*, etc. variables) exceeds the exec()
+# size limit, breaking xargs and other tools invoked by make.
+# Work around this by running make through env -i with only the
+# variables it actually needs.
 if [[ "$target_platform" == win-* ]]; then
-  for v in $(compgen -v | grep -E '^(CONDA_BACKUP_|__CONDA_SAVED_)'); do unset "$v"; done
+  echo "=== Environment debug info ==="
+  echo "Total env vars: $(env | wc -l)"
+  echo "Total env size (bytes): $(env | wc -c)"
+  echo "Top variable prefixes:"
+  env | cut -d= -f1 | sed 's/_[^_]*$//' | sort | uniq -c | sort -rn | head -20
+  echo "Largest variables (top 20):"
+  env | awk -F= '{printf "%6d %s\n", length($0), $1}' | sort -rn | head -20
+  echo "==============================="
+  _make() {
+    env -i \
+      PATH="$PATH" \
+      HOME="$HOME" \
+      SHELL="${SHELL:-/bin/bash}" \
+      MSYSTEM="${MSYSTEM:-}" \
+      MSYS2_PATH_TYPE="${MSYS2_PATH_TYPE:-}" \
+      PREFIX="$PREFIX" \
+      HOST="${HOST:-}" \
+      make "$@"
+  }
+else
+  _make() { make "$@"; }
 fi
 
-make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
+_make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP} || true
 
 # Workaround: dlltool --export-all-symbols segfaults on Windows with many
 # object files (binutils 2.45.x). If the .def files were not generated,
@@ -119,16 +141,16 @@ if [[ "$target_platform" == win-* ]]; then
     echo "Generated libpari.def and libpari_exe.def"
 
     # Rebuild with the manually generated .def files
-    make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+    _make gp AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
   fi
   cd ..
 fi
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
-    make test-all
+    _make test-all
 fi
 
-make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
+_make install install-lib-sta AR=${AR} RANLIB=${RANLIB} STRIP=${STRIP}
 cp "src/language/anal.h" "$PREFIX/include/pari/anal.h"
 
 # Relocate Windows libraries from bin -> lib so that linkers find them
