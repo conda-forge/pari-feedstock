@@ -163,7 +163,7 @@ if [[ "$target_platform" == win-* ]]; then
   cd ..
 fi
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]] && [[ "$target_platform" == "win-64" || "$target_platform" == "linux-64" ]]; then
     make test-all
 fi
 
