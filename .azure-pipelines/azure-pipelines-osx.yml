@@ -19,11 +19,11 @@ jobs:
       osx_arm64_variantpthread:
         CONFIG: osx_arm64_variantpthread
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
+        VMIMAGE: macOS-15
       osx_arm64_variantsingle:
         CONFIG: osx_arm64_variantsingle
         UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
+        VMIMAGE: macOS-15
   timeoutInMinutes: 360
   variables: {}
 
