@@ -59,6 +59,20 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_ppc64le_variantpthread</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_variantpthread" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_variantsingle</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pari-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_variantsingle" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_variantpthread</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=755&branchName=main">
