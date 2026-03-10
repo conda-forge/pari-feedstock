@@ -10,4 +10,5 @@ provider:
   linux_64: default
   osx_64: azure
   win_64: azure
+  linux_ppc64le: azure
 test: native_and_emulated
