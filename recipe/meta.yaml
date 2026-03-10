@@ -1,6 +1,6 @@
-{% set version = "2.17.2" %}
+{% set version = "2.17.3" %}
 {% set name = "pari" %}
-{% set build_num = "5" %}
+{% set build_num = "0" %}
 {% set posix = "m2-" if build_platform.startswith("win-") else '' %}
 
 package:
@@ -11,7 +11,7 @@ source:
   url:
     - http://pari.math.u-bordeaux.fr/pub/pari/unix/{{ name }}-{{ version }}.tar.gz
     - http://pari.math.u-bordeaux.fr/pub/pari/OLD/{{ version.split('.')[:2] | join('.') }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7d30578f5cf97b137a281f4548d131aafc0cde86bcfd10cc1e1bd72a81e65061
+  sha256: 8d9c4fcd584c468d27e0f23c36836587284452094c4b1c404c20c4b810462dcb
   patches:
     - patches/0001-Make-Configure-script-verbose.patch
     - patches/0002-Set-RUNTEST-echo-when-cross-compiling.patch  # [build_platform != target_platform]
@@ -21,7 +21,7 @@ source:
     - patches/0004-Do-not-run-get_gmp-when-cross-compiling.patch
     # Do not check for readline. The script fails to detect our readline in the
     # conda-prefix. (And it also does not work when cross-compiling.)
-    - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch
+    - patches/0005-Do-not-run-get_readline-when-cross-compiling.patch  # [not win]
     - patches/0006-Fix-config-objdir-when-cross-compiling.patch  # [build_platform != target_platform]
     # Patches from sagemath
     - patches/get_dlcflags.patch
@@ -59,6 +59,7 @@ requirements:
 
 test:
   commands:
+    - '${PREFIX}/bin/gp --version'                                         # [unix]
     - test -f ${PREFIX}/include/pari/pari.h                                # [unix]
     - test -f ${PREFIX}/include/pari/anal.h                                # [unix]
     - test -f ${PREFIX}/lib/libpari.a                                      # [unix]
@@ -67,6 +68,7 @@ test:
     - test -f ${PREFIX}/lib/libpari-gmp-tls${SHLIB_EXT}                    # [osx and variant == "pthread"]
     - test -f ${PREFIX}/lib/libpari-gmp${SHLIB_EXT}.{{ version }}          # [linux and variant == "single"]
     - test -f ${PREFIX}/lib/libpari-gmp-tls${SHLIB_EXT}.{{ version }}      # [linux and variant == "pthread"]
+    - '%LIBRARY_BIN%\gp.exe --version'                                     # [win]
     - if not exist %LIBRARY_INC%\pari\pari.h exit 1                        # [win]
     - if not exist %LIBRARY_INC%\pari\anal.h exit 1                        # [win]
     - if not exist %LIBRARY_BIN%\libpari.dll exit 1                        # [win]
