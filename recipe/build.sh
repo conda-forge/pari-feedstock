@@ -48,7 +48,7 @@ case $target_platform in
   osx-64)
     export target_host="x86_64-darwin" ;;
   osx-arm64)
-    export target_host="arm64-darwin" ;;
+    export target_host="aarch64-darwin" ;;
   linux-ppc64le)
     export target_host="ppc64le-linux" ;;
   linux-aarch64)
