@@ -58,7 +58,7 @@ case $target_platform in
   win-64)
     export target_host="x86_64-mingw" ;;
   *)
-    echo "Unknown architecture. Fix build.sh"
+    echo "Unknown architecture ${target_platform}. Fix build.sh"
     exit 1
     ;;
 esac

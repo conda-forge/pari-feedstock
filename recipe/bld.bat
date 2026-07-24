@@ -2,6 +2,7 @@ echo source %SYS_PREFIX:\=/%/etc/profile.d/conda.sh    > conda_build.sh
 echo conda activate "${PREFIX}"                       >> conda_build.sh
 echo conda activate --stack "${BUILD_PREFIX}"         >> conda_build.sh
 echo CONDA_PREFIX=${CONDA_PREFIX//\\//}               >> conda_build.sh
+echo export target_platform=%target_platform%          >> conda_build.sh
 type "%RECIPE_DIR%\build.sh"                          >> conda_build.sh
 
 set PREFIX=%PREFIX:\=/%
